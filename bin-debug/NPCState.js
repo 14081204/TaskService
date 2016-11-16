@@ -14,10 +14,10 @@ var TaskNoneState = (function () {
 egret.registerClass(TaskNoneState,'TaskNoneState',["State"]);
 var TaskAvilableState = (function () {
     function TaskAvilableState(npc) {
-        this.taskSighX = 15;
-        this.taskSighY = 20;
-        this.taskSighWidth = 30;
-        this.taskSighHeight = 30;
+        this.taskSignX = 50;
+        this.taskSignY = 20;
+        this.taskSignWidth = 50;
+        this.taskSignHeight = 50;
         this.npc = npc;
         this.taskSign = new egret.Bitmap();
     }
@@ -32,10 +32,10 @@ var TaskAvilableState = (function () {
         //console.log("Exit Task Avilable State");
     };
     p.drawTaskSign = function () {
-        this.taskSign.x = this.taskSighX;
-        this.taskSign.y = this.taskSighY;
-        this.taskSign.width = this.taskSighWidth;
-        this.taskSign.height = this.taskSighHeight;
+        this.taskSign.x = this.taskSignX;
+        this.taskSign.y = this.taskSignY;
+        this.taskSign.width = this.taskSignWidth;
+        this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture = RES.getRes(image.ACCEPTABLEimage);
     };
     return TaskAvilableState;
@@ -43,10 +43,10 @@ var TaskAvilableState = (function () {
 egret.registerClass(TaskAvilableState,'TaskAvilableState',["State"]);
 var TaskDuringState = (function () {
     function TaskDuringState(npc) {
-        this.taskSighX = 15;
-        this.taskSighY = 20;
-        this.taskSighWidth = 30;
-        this.taskSighHeight = 30;
+        this.taskSignX = 55;
+        this.taskSignY = 37;
+        this.taskSignWidth = 70;
+        this.taskSignHeight = 70;
         this.npc = npc;
         this.taskSign = new egret.Bitmap();
     }
@@ -61,10 +61,10 @@ var TaskDuringState = (function () {
         console.log("Exit Task Avilable State");
     };
     p.drawTaskSign = function () {
-        this.taskSign.x = this.taskSighX;
-        this.taskSign.y = this.taskSighY;
-        this.taskSign.width = this.taskSighWidth;
-        this.taskSign.height = this.taskSighHeight;
+        this.taskSign.x = this.taskSignX;
+        this.taskSign.y = this.taskSignY;
+        this.taskSign.width = this.taskSignWidth;
+        this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture = RES.getRes(image.DURINGimage);
     };
     return TaskDuringState;
@@ -72,10 +72,10 @@ var TaskDuringState = (function () {
 egret.registerClass(TaskDuringState,'TaskDuringState',["State"]);
 var TaskSubmitState = (function () {
     function TaskSubmitState(npc) {
-        this.taskSighX = 15;
-        this.taskSighY = 20;
-        this.taskSighWidth = 30;
-        this.taskSighHeight = 30;
+        this.taskSignX = 55;
+        this.taskSignY = 37;
+        this.taskSignWidth = 70;
+        this.taskSignHeight = 70;
         this.npc = npc;
         this.taskSign = new egret.Bitmap();
     }
@@ -90,10 +90,10 @@ var TaskSubmitState = (function () {
         console.log("Exit Task Submit State");
     };
     p.drawTaskSign = function () {
-        this.taskSign.x = this.taskSighX;
-        this.taskSign.y = this.taskSighY;
-        this.taskSign.width = this.taskSighWidth;
-        this.taskSign.height = this.taskSighHeight;
+        this.taskSign.x = this.taskSignX;
+        this.taskSign.y = this.taskSignY;
+        this.taskSign.width = this.taskSignWidth;
+        this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture = RES.getRes(image.CANSUBMITTEDimage);
     };
     return TaskSubmitState;

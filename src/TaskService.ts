@@ -59,7 +59,7 @@ class TaskService {
 		task = taskSearch(this.taskList, id);
         switch (id) {
             case "001":
-                var task = new Task("001", "Task 1", "找到NPC2", 0, "npc_0", "npc_1");
+                var task = new Task("001", "Task 1", "找到蝶灵仙子", 0, "npc_0", "npc_1");
 				task.status = 1;
                 this.taskList.push(task);
 				this.Notify(task);

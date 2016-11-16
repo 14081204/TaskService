@@ -34,7 +34,7 @@ class Main extends egret.DisplayObjectContainer {
      * Process interface loading
      */
     private loadingView:LoadingUI;
-
+    
     public constructor() {
         super();
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
@@ -129,6 +129,26 @@ class Main extends egret.DisplayObjectContainer {
         var taskPanel = new TaskPanel(this, taskService);
         var npctalkpanel=new DialoguePanel(this,taskService);
         var npc_0 = new NPC("npc_0", "NPC_1", taskService,npctalkpanel);
+
+        var NPC1Nametextfield = new egret.TextField();
+        this.addChild(NPC1Nametextfield);
+        NPC1Nametextfield.width = stageW - 172;
+        NPC1Nametextfield.size = 32;
+        NPC1Nametextfield.textColor = 0xffffff;
+        NPC1Nametextfield.x = 150;
+        NPC1Nametextfield.y = 890;
+        NPC1Nametextfield.text = "女神";
+        this.textfield = NPC1Nametextfield;
+
+        var NPC2Nametextfield = new egret.TextField();
+        this.addChild(NPC2Nametextfield);
+        NPC2Nametextfield.width = stageW - 172;
+        NPC2Nametextfield.size = 32;
+        NPC2Nametextfield.textColor = 0xffffff;
+        NPC2Nametextfield.x = 500;
+        NPC2Nametextfield.y = 820;
+        NPC2Nametextfield.text = "蝶灵仙子";
+        this.textfield = NPC2Nametextfield;
 
         //var npc_0 = new NPC("npc_0", "NPC_1", taskService,npctalkpanel);
         npc_0.setNpc(100, 600, 0xffffff);

@@ -1,27 +1,27 @@
 var DialoguePanel = (function () {
     function DialoguePanel(stage, taskService) {
         this.backColor = 0xFFFAFA;
-        this.panelX = 100;
-        this.panelY = 300;
-        this.panelWidth = 200;
-        this.panelHeight = 300;
+        this.panelX = 37;
+        this.panelY = 350;
+        this.panelWidth = 350;
+        this.panelHeight = 250;
         this.taskNameTextFieldText = "";
-        this.taskNameTextFieldX = 40;
-        this.taskNameTextFieldY = 50;
+        this.taskNameTextFieldX = 270;
+        this.taskNameTextFieldY = 120;
         this.taskNameTextFieldWidth = 200;
         this.taskNameTextFieldColor = 0x000000;
         this.taskDescTextFieldText = "";
-        this.taskDescTextFieldX = 10;
-        this.taskDescTextFieldY = 100;
-        this.taskDescTextFieldWidth = 180;
+        this.taskDescTextFieldX = 270;
+        this.taskDescTextFieldY = 175;
+        this.taskDescTextFieldWidth = 160;
         this.taskDescTextFieldColor = 0xFF0000;
         this.buttonColor = 0x808000;
-        this.buttonX = 30;
-        this.buttonY = 200;
+        this.buttonX = 270;
+        this.buttonY = 275;
         this.buttonWidth = 130;
-        this.buttonHeight = 70;
+        this.buttonHeight = 50;
         this.buttonTextFieldText = "确认";
-        this.buttonTextFieldX = this.buttonX + 15;
+        this.buttonTextFieldX = this.buttonX + 10;
         this.buttonTextFieldY = this.buttonY + 10;
         this.buttonTextFieldWidth = 120;
         this.buttonTextFieldColor = 0xFFFAFA;
@@ -57,8 +57,8 @@ var DialoguePanel = (function () {
         this.button.addChild(this.buttonBack);
         this.button.addChild(this.buttonTextField);
         //drawBackGround
-        this.backGround.graphics.beginFill(0x000000, 0.5);
-        this.backGround.graphics.drawRect(0, 0, this.panelWidth, this.panelHeight);
+        this.backGround.graphics.beginFill(0xfcbf3c, 0.7);
+        this.backGround.graphics.drawRect(150, 100, this.panelWidth, this.panelHeight);
         this.backGround.graphics.endFill();
         //setText
         this.taskNameTextField.text = this.taskNameTextFieldText;
@@ -73,6 +73,7 @@ var DialoguePanel = (function () {
         this.taskDescTextField.width = this.taskDescTextFieldWidth;
         this.taskDescTextField.bold = false;
         this.taskDescTextField.textColor = this.taskDescTextFieldColor;
+        this.taskDescTextField.textAlign = egret.HorizontalAlign.LEFT;
         this.panel.addChild(this.backGround);
         this.panel.addChild(this.taskNameTextField);
         this.panel.addChild(this.taskDescTextField);

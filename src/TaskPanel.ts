@@ -60,23 +60,6 @@ class TaskPanel implements Observer{
 		this.drawPanel();
 	}
 
-	private setText() {
-		this.taskNameTextField.text = this.taskNameTextFieldText;
-		this.taskNameTextField.x = this.taskNameTextFieldX;
-		this.taskNameTextField.y = this.taskNameTextFieldY;
-		this.taskNameTextField.width = this.taskNameTextFieldWidth;
-		this.taskNameTextField.bold = true;
-		this.taskNameTextField.textColor = this.taskNameTextFieldColor;
-
-		this.taskDescTextField.text = this.taskDescTextFieldText;
-		this.taskDescTextField.x = this.taskDescTextFieldX;
-		this.taskDescTextField.y = this.taskDescTextFieldY;
-		this.taskDescTextField.width = this.taskDescTextFieldWidth;
-		this.taskDescTextField.bold = false;
-		this.taskDescTextField.textColor = this.taskDescTextFieldColor;
-		this.taskDescTextField.textAlign = egret.HorizontalAlign.LEFT;
-	}
-
 	public drawPanel() {
 		this.panel.x = this.panelX;
 		this.panel.y = this.panelY;
@@ -85,7 +68,7 @@ class TaskPanel implements Observer{
 
 		//drawButton
 			//drawButtonBack
-		this.buttonBack.graphics.beginFill(this.buttonColor, 0.8);
+		this.buttonBack.graphics.beginFill(this.buttonColor, 0.25);
 		this.buttonBack.graphics.drawRect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
 		this.buttonBack.graphics.endFill();
 			//setButtonText

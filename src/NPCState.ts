@@ -23,10 +23,10 @@ class TaskAvilableState implements State {
     private npc: NPC;
 
     taskSign: egret.Bitmap;
-    taskSighX = 15;
-    taskSighY = 20;
-    taskSighWidth = 30;
-    taskSighHeight = 30;
+    taskSignX = 50;
+    taskSignY = 20;
+    taskSignWidth = 50;
+    taskSignHeight = 50;
 
     constructor(npc: NPC) {
         this.npc = npc;
@@ -48,10 +48,10 @@ class TaskAvilableState implements State {
     }
 
     drawTaskSign() {
-        this.taskSign.x = this.taskSighX;
-        this.taskSign.y = this.taskSighY;
-        this.taskSign.width = this.taskSighWidth;
-        this.taskSign.height = this.taskSighHeight;
+        this.taskSign.x = this.taskSignX;
+        this.taskSign.y = this.taskSignY;
+        this.taskSign.width = this.taskSignWidth;
+        this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture=RES.getRes(image.ACCEPTABLEimage);
 
     }
@@ -60,13 +60,13 @@ class TaskAvilableState implements State {
 
 class TaskDuringState implements State {
 
-      private npc: NPC;
+    private npc: NPC;
 
     taskSign: egret.Bitmap;
-    taskSighX = 15;
-    taskSighY = 20;
-    taskSighWidth = 30;
-    taskSighHeight = 30;
+    taskSignX = 55;
+    taskSignY = 37;
+    taskSignWidth = 70;
+    taskSignHeight = 70;
 
     constructor(npc: NPC) {
         this.npc = npc;
@@ -88,10 +88,10 @@ class TaskDuringState implements State {
     }
 
     drawTaskSign() {
-        this.taskSign.x = this.taskSighX;
-        this.taskSign.y = this.taskSighY;
-        this.taskSign.width = this.taskSighWidth;
-        this.taskSign.height = this.taskSighHeight;
+        this.taskSign.x = this.taskSignX;
+        this.taskSign.y = this.taskSignY;
+        this.taskSign.width = this.taskSignWidth;
+        this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture=RES.getRes(image.DURINGimage);
 
     }
@@ -102,10 +102,10 @@ class TaskSubmitState implements State {
     private npc: NPC;
 
     taskSign: egret.Bitmap;
-    taskSighX = 15;
-    taskSighY = 20;
-    taskSighWidth = 30;
-    taskSighHeight = 30;
+    taskSignX = 55;
+    taskSignY = 37;
+    taskSignWidth = 70;
+    taskSignHeight = 70;
 
     constructor(npc: NPC) {
         this.npc = npc;
@@ -127,10 +127,10 @@ class TaskSubmitState implements State {
     }
 
     drawTaskSign() {
-        this.taskSign.x = this.taskSighX;
-        this.taskSign.y = this.taskSighY;
-        this.taskSign.width = this.taskSighWidth;
-        this.taskSign.height = this.taskSighHeight;
+        this.taskSign.x = this.taskSignX;
+        this.taskSign.y = this.taskSignY;
+        this.taskSign.width = this.taskSignWidth;
+        this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture=RES.getRes(image.CANSUBMITTEDimage);
 
     }

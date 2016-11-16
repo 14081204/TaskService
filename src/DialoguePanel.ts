@@ -10,38 +10,38 @@ class DialoguePanel {
 
 	private backColor = 0xFFFAFA;
 	private backGround:egret.Shape;
-	private panelX = 100;
-	private panelY = 300;
-	private panelWidth = 200;
-	private panelHeight = 300;
+	private panelX = 37;
+	private panelY = 350;
+	private panelWidth = 350;
+	private panelHeight = 250;
 
 	private taskNameTextField:egret.TextField;
 	private taskNameTextFieldText = "";
-	private taskNameTextFieldX = 40;
-	private taskNameTextFieldY = 50;
+	private taskNameTextFieldX = 270;
+	private taskNameTextFieldY = 120;
 	private taskNameTextFieldWidth = 200;
 	private taskNameTextFieldColor = 0x000000;
 
 
 	private taskDescTextField:egret.TextField;
 	private taskDescTextFieldText = "";
-	private taskDescTextFieldX = 10;
-	private taskDescTextFieldY = 100;
-	private taskDescTextFieldWidth = 180;
+	private taskDescTextFieldX = 270;
+	private taskDescTextFieldY = 175;
+	private taskDescTextFieldWidth = 160;
 	private taskDescTextFieldColor = 0xFF0000;
 	
 	private button:egret.DisplayObjectContainer;
 	private buttonBack:egret.Shape;
 	private buttonColor = 0x808000;
-	private buttonX = 30;
-	private buttonY = 200;
+	private buttonX = 270;
+	private buttonY = 275;
 	private buttonWidth = 130;
-	private buttonHeight = 70;
+	private buttonHeight = 50;
 
 
 	private buttonTextField:egret.TextField;
 	private buttonTextFieldText = "确认";
-	private buttonTextFieldX = this.buttonX + 15;
+	private buttonTextFieldX = this.buttonX + 10;
 	private buttonTextFieldY = this.buttonY + 10;
 	private buttonTextFieldWidth = 120;
 	private buttonTextFieldColor = 0xFFFAFA;
@@ -85,8 +85,8 @@ class DialoguePanel {
 	
 
 		//drawBackGround
-		this.backGround.graphics.beginFill(0x000000, 0.5);
-		this.backGround.graphics.drawRect(0,0,this.panelWidth,this.panelHeight);
+		this.backGround.graphics.beginFill(0xfcbf3c, 0.7);
+		this.backGround.graphics.drawRect(150,100,this.panelWidth,this.panelHeight);
 		this.backGround.graphics.endFill();
 
 		//setText
@@ -102,6 +102,7 @@ class DialoguePanel {
 		this.taskDescTextField.width = this.taskDescTextFieldWidth;
 		this.taskDescTextField.bold = false;
 		this.taskDescTextField.textColor = this.taskDescTextFieldColor;
+		this.taskDescTextField.textAlign = egret.HorizontalAlign.LEFT;
 
 
 		this.panel.addChild(this.backGround);
