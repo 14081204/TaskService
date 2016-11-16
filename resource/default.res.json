@@ -1,0 +1,45 @@
+{
+	"groups": [
+		{
+			"keys": "bg_jpg,egret_icon_png,description_json,isaccept_png,unaccept_png,processing_png,canputin_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "isaccept_png",
+			"type": "image",
+			"url": "assets/isaccept.png"
+		},
+		{
+			"name": "unaccept_png",
+			"type": "image",
+			"url": "assets/unaccept.png"
+		},
+		{
+			"name": "processing_png",
+			"type": "image",
+			"url": "assets/processing.png"
+		},
+		{
+			"name": "canputin_png",
+			"type": "image",
+			"url": "assets/canputin.png"
+		}
+	]
+}
