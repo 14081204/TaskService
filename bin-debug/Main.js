@@ -101,7 +101,7 @@ var Main = (function (_super) {
      * Create a game scene
      */
     p.createGameScene = function () {
-        var sky = this.createBitmapByName("bg_jpg");
+        var sky = this.createBitmapByName("bg1_jpg");
         this.addChild(sky);
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
@@ -109,15 +109,16 @@ var Main = (function (_super) {
         sky.height = stageH;
         this.touchEnabled = true;
         var taskService = new TaskService();
-        //var taskPanel = new TaskPanel(this, taskService);
+        var taskPanel = new TaskPanel(this, taskService);
         var npctalkpanel = new DialoguePanel(this, taskService);
         var npc_0 = new NPC("npc_0", "NPC_1", taskService, npctalkpanel);
-        npc_0.setNpc(0, 100, 0x800080);
+        //var npc_0 = new NPC("npc_0", "NPC_1", taskService,npctalkpanel);
+        npc_0.setNpc(100, 600, 0xffffff);
         npc_0.drawNpc();
         this.addChild(npc_0.npcStage);
         npc_0.getTask();
         var npc_1 = new NPC("npc_1", "NPC_2", taskService, npctalkpanel);
-        npc_1.setNpc1(200, 100, 0x0000FF);
+        npc_1.setNpc1(480, 520, 0xffffff);
         npc_1.drawNpc();
         this.addChild(npc_1.npcStage);
         npc_1.getTask();

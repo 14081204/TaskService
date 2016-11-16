@@ -1,62 +1,63 @@
-var emojiimage = {
-    npc_0: "NPC01_png",
-    npc_1: "NPC02_png",
-    ACCEPTABLEimage: "ACCEPTABLE_png",
-    DURINGimage: "DURING_png",
-    CANSUBMITTEDimage: "CANSUBMITTED_png",
-    UNACCEPTABLEimage: "UNACCEPTABLE_png"
+var image = {
+    npc_0: "NPC05_png",
+    npc_1: "NPC04_png",
+    ACCEPTABLEimage: "isaccept_png",
+    DURINGimage: "processing_png",
+    CANSUBMITTEDimage: "canputin_png",
+    UNACCEPTABLEimage: "unaccept_png"
 };
 var NPC = (function () {
-    function NPC(npcId, npcName, taskService, Dialoguepanel) {
-        this.tileSize = 64;
-        this.emojiX = 0;
-        this.emojiY = 64;
+    function NPC(npcId, npcName, taskService, NPCtalkpanel) {
+        //tileSize: number = 100;
+        this.npcimageX = 0;
+        this.npcimageY = 64;
         this.npcStageWidth = 64;
         this.npcStageHeight = 128;
         this.npcStage = new egret.DisplayObjectContainer();
         this.npcStageShape = new egret.Shape();
-        this.emoji = new egret.Bitmap();
+        this.npcimage = new egret.Bitmap();
         this.npcId = npcId;
         this.npcName = npcName;
         this.taskService = taskService;
         this.taskService.Attach(this, "NPC");
-        /*this.taskNoneState = new TaskNoneState(this);
+        this.taskNoneState = new TaskNoneState(this);
         this.taskAvilableState = new TaskAvilableState(this);
         this.taskDuringState = new TaskDuringState(this);
         this.taskSubmitState = new TaskSubmitState(this);
-
-        this.taskStateMachine = new StateMachine(this.taskNoneState);*/
-        this.Dialoguepanel = Dialoguepanel;
+        this.taskStateMachine = new StateMachine(this.taskNoneState);
+        this.Dialoguepanel = NPCtalkpanel;
     }
     var d = __define,c=NPC,p=c.prototype;
     p.getTask = function () {
         this.task = this.taskService.getTaskByCustomRole(this.rule, this.npcId);
-        console.log("This Task State: " + this.task.status);
-        //this.checkState();
+        //console.log("This Task State: " + this.task.status);
+        this.checkState();
     };
-    p.setemoji = function () {
-        this.emoji.texture = RES.getRes(emojiimage.npc_0);
-        this.emoji.x = this.emojiX;
-        this.emoji.y = this.emojiY;
-        this.emoji.width = this.tileSize;
-        this.emoji.height = this.tileSize;
+    p.setnpcimage = function () {
+        this.npcimage.texture = RES.getRes(image.npc_0);
+        this.npcimage.x = this.npcimageX;
+        this.npcimage.y = this.npcimageY;
+        this.npcimage.width = 150;
+        this.npcimage.height = 230;
     };
-    p.setemoji1 = function () {
-        this.emoji.texture = RES.getRes(emojiimage.npc_1);
-        this.emoji.x = this.emojiX;
-        this.emoji.y = this.emojiY;
-        this.emoji.width = this.tileSize;
-        this.emoji.height = this.tileSize;
-    };
-    p.setNpc = function (npcX, npcY, npcColor) {
-        this.npcStageX = npcX;
-        this.npcStageY = npcY;
-        this.setemoji();
+    p.setnpcimage1 = function () {
+        this.npcimage.texture = RES.getRes(image.npc_1);
+        this.npcimage.x = this.npcimageX;
+        this.npcimage.y = this.npcimageY;
+        this.npcimage.width = 150;
+        this.npcimage.height = 230;
+        //this.npcimage.width = this.tileSize;
+        //this.npcimage.height = this.tileSize;
     };
     p.setNpc1 = function (npcX, npcY, npcColor) {
         this.npcStageX = npcX;
         this.npcStageY = npcY;
-        this.setemoji1();
+        this.setnpcimage1();
+    };
+    p.setNpc = function (npcX, npcY, npcColor) {
+        this.npcStageX = npcX;
+        this.npcStageY = npcY;
+        this.setnpcimage();
     };
     p.drawNpcShape = function () {
         this.npcStageShape.graphics.drawRect(0, 0, this.npcStageWidth, this.npcStageHeight);
@@ -69,47 +70,43 @@ var NPC = (function () {
         this.npcStage.width = this.npcStageWidth;
         this.npcStage.height = this.npcStageHeight;
         this.npcStage.addChild(this.npcStageShape);
-        this.npcStage.addChild(this.emoji);
-        this.emoji.touchEnabled = true;
+        this.npcStage.addChild(this.npcimage);
+        this.npcimage.touchEnabled = true;
         //this.npcStage.touchEnabled = true;
-        this.emoji.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onNpcClick, this);
+        this.npcimage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onNpcClick, this);
     };
-    /*checkState() {
+    p.checkState = function () {
         switch (this.task.status) {
             case TaskStatus.UNACCEPTABLE:
             case TaskStatus.SUBMITTED:
                 this.taskStateMachine.changeState(this.taskNoneState);
                 break;
-
             case TaskStatus.ACCEPTABLE:
                 if (this.task.fromNpcId == this.npcId) {
                     this.taskStateMachine.changeState(this.taskAvilableState);
-                } else {
+                }
+                else {
                     this.taskStateMachine.changeState(this.taskNoneState);
                 }
                 break;
             case TaskStatus.DURING:
                 if (this.task.toNpcId == this.npcId) {
                     this.taskStateMachine.changeState(this.taskDuringState);
-                } else {
+                }
+                else {
                     this.taskStateMachine.changeState(this.taskNoneState);
                 }
                 break;
-
-
             case TaskStatus.CAN_SUBMIT:
                 if (this.task.toNpcId == this.npcId) {
                     this.taskStateMachine.changeState(this.taskSubmitState);
-                } else {
+                }
+                else {
                     this.taskStateMachine.changeState(this.taskNoneState);
                 }
                 break;
-
-
-
         }
-
-    }*/
+    };
     p.onNpcClick = function (e, task, npcid) {
         if (task === void 0) { task = this.task; }
         if (npcid === void 0) { npcid = this.npcId; }
@@ -117,12 +114,12 @@ var NPC = (function () {
     };
     p.onChange = function (task) {
         this.task = task;
-        //this.checkState();
+        this.checkState();
     };
     p.rule = function (taskList, npcId) {
         for (var i = 0; i < taskList.length; i++) {
             if (taskList[i].fromNpcId == npcId || taskList[i].toNpcId == npcId) {
-                console.log("Find");
+                //console.log("Find");
                 return taskList[i];
             }
         }

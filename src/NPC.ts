@@ -1,6 +1,6 @@
-var emojiimage = {
-    npc_0: "NPC01_png",
-    npc_1: "NPC02_png",
+var image = {
+    npc_0: "NPC05_png",
+    npc_1: "NPC04_png",
     ACCEPTABLEimage: "isaccept_png",
     DURINGimage: "processing_png",
     CANSUBMITTEDimage: "canputin_png",
@@ -18,68 +18,82 @@ class NPC implements Observer {
     npcId: string;
     npcName: string;
 
-    emoji: egret.Bitmap;
-    tileSize: number = 64;
-    emojiX: number = 0;
-    emojiY: number = 64;
+    npcimage: egret.Bitmap;
+    //tileSize: number = 100;
+    npcimageX: number = 0;
+    npcimageY: number = 64;
 
     npcStageShape: egret.Shape;
     npcStageX: number;
     npcStageY: number;
     npcStageWidth = 64;
     npcStageHeight = 128;
-    
+
+    taskNoneState: State;
+    taskAvilableState: State;
+    taskSubmitState: State;
+    taskDuringState: State;
+    taskStateMachine: StateMachine;
     Dialoguepanel:DialoguePanel;
 
-    public constructor(npcId: string, npcName: string, taskService,Dialoguepanel:DialoguePanel) {
+    public constructor(npcId: string, npcName: string, taskService,NPCtalkpanel:DialoguePanel) {
         this.npcStage = new egret.DisplayObjectContainer();
         this.npcStageShape = new egret.Shape();
-        this.emoji = new egret.Bitmap();
+        this.npcimage = new egret.Bitmap();
         this.npcId = npcId;
         this.npcName = npcName;
         this.taskService = taskService;
         this.taskService.Attach(this, "NPC");
 
-        this.Dialoguepanel=Dialoguepanel;
+        this.taskNoneState = new TaskNoneState(this);
+        this.taskAvilableState = new TaskAvilableState(this);
+        this.taskDuringState = new TaskDuringState(this);
+        this.taskSubmitState = new TaskSubmitState(this);
+
+        this.taskStateMachine = new StateMachine(this.taskNoneState);
+        this.Dialoguepanel=NPCtalkpanel;
     }
 
     getTask() {
         this.task = this.taskService.getTaskByCustomRole(this.rule, this.npcId);
-        console.log("This Task State: " + this.task.status);
+        //console.log("This Task State: " + this.task.status);
+        this.checkState();
     }
 
-    setemoji() {
-        this.emoji.texture = RES.getRes(emojiimage.npc_0);
-        this.emoji.x = this.emojiX;
-        this.emoji.y = this.emojiY;
-        this.emoji.width = this.tileSize;
-        this.emoji.height = this.tileSize;
+    setnpcimage() {
+        this.npcimage.texture = RES.getRes(image.npc_0);
+        this.npcimage.x = this.npcimageX;
+        this.npcimage.y = this.npcimageY;
+        this.npcimage.width = 150;
+        this.npcimage.height = 230;
     }
-    setemoji1() {
-        this.emoji.texture = RES.getRes(emojiimage.npc_1);
-        this.emoji.x = this.emojiX;
-        this.emoji.y = this.emojiY;
-        this.emoji.width = this.tileSize;
-        this.emoji.height = this.tileSize;
+
+    setnpcimage1() {
+        this.npcimage.texture = RES.getRes(image.npc_1);
+        this.npcimage.x = this.npcimageX;
+        this.npcimage.y = this.npcimageY;
+        this.npcimage.width = 150;
+        this.npcimage.height = 230;
+        //this.npcimage.width = this.tileSize;
+        //this.npcimage.height = this.tileSize;
+    }
+
+    setNpc1(npcX: number, npcY: number, npcColor: number) {
+        this.npcStageX = npcX;
+        this.npcStageY = npcY;
+        this.setnpcimage1();
     }
 
     setNpc(npcX: number, npcY: number, npcColor: number) {
         this.npcStageX = npcX;
         this.npcStageY = npcY;
 
-        this.setemoji();
-    }
-
-    setNpc1(npcX: number, npcY: number, npcColor: number) {
-        this.npcStageX = npcX;
-        this.npcStageY = npcY;
-        this.setemoji1();
+        this.setnpcimage();
     }
 
     drawNpcShape() {
         this.npcStageShape.graphics.drawRect(0, 0, this.npcStageWidth, this.npcStageHeight);
         this.npcStageShape.graphics.endFill();
-
     }
 
     drawNpc() {
@@ -91,9 +105,47 @@ class NPC implements Observer {
         this.npcStage.height = this.npcStageHeight;
 
         this.npcStage.addChild(this.npcStageShape);
-        this.npcStage.addChild(this.emoji);
-        this.emoji.touchEnabled = true;
-        this.emoji.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onNpcClick, this);
+        this.npcStage.addChild(this.npcimage);
+        this.npcimage.touchEnabled = true;
+        //this.npcStage.touchEnabled = true;
+        this.npcimage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onNpcClick, this);
+    }
+
+    checkState() {
+        switch (this.task.status) {
+            case TaskStatus.UNACCEPTABLE:
+            case TaskStatus.SUBMITTED:
+                this.taskStateMachine.changeState(this.taskNoneState);
+                break;
+
+            case TaskStatus.ACCEPTABLE:
+                if (this.task.fromNpcId == this.npcId) {
+                    this.taskStateMachine.changeState(this.taskAvilableState);
+                } else {
+                    this.taskStateMachine.changeState(this.taskNoneState);
+                }
+                break;
+            case TaskStatus.DURING:
+                if (this.task.toNpcId == this.npcId) {
+                    this.taskStateMachine.changeState(this.taskDuringState);
+                } else {
+                    this.taskStateMachine.changeState(this.taskNoneState);
+                }
+                break;
+
+
+            case TaskStatus.CAN_SUBMIT:
+                if (this.task.toNpcId == this.npcId) {
+                    this.taskStateMachine.changeState(this.taskSubmitState);
+                } else {
+                    this.taskStateMachine.changeState(this.taskNoneState);
+                }
+                break;
+
+
+
+        }
+
     }
 
     onNpcClick(e: egret.TouchEvent, task: Task = this.task, npcid: string = this.npcId) {
@@ -102,12 +154,13 @@ class NPC implements Observer {
 
     onChange(task: Task) {
         this.task = task;
+        this.checkState();
     }
 
     rule(taskList: Task[], npcId: string): Task {
         for (var i = 0; i < taskList.length; i++) {
             if (taskList[i].fromNpcId == npcId || taskList[i].toNpcId == npcId) {
-                console.log("Find");
+                //console.log("Find");
                 return taskList[i];
 
             }
@@ -115,4 +168,3 @@ class NPC implements Observer {
     }
 
 }
-

@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,isaccept_png,unaccept_png,processing_png,canputin_png",
+			"keys": "bg_jpg,egret_icon_png,description_json,isaccept_png,unaccept_png,processing_png,canputin_png,NPC03_png,NPC04_png,NPC05_png,bg1_jpg",
 			"name": "preload"
 		}
 	],
@@ -40,6 +40,26 @@
 			"name": "canputin_png",
 			"type": "image",
 			"url": "assets/canputin.png"
+		},
+		{
+			"name": "NPC03_png",
+			"type": "image",
+			"url": "assets/NPC03.png"
+		},
+		{
+			"name": "NPC04_png",
+			"type": "image",
+			"url": "assets/NPC04.png"
+		},
+		{
+			"name": "NPC05_png",
+			"type": "image",
+			"url": "assets/NPC05.png"
+		},
+		{
+			"name": "bg1_jpg",
+			"type": "image",
+			"url": "assets/bg1.jpg"
 		}
 	]
 }
