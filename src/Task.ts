@@ -3,11 +3,12 @@ class Task {
     name: string;
     desc: string;
     status: TaskStatus;
-    private _current: number = 0;
+    private current: number = 0;
     public total: number;
     fromNpcId: string;
     toNpcId: string;
-    //total:number;
+
+    private so:string="("+this.current+"/"+this.total+")";
     //private condition:TaskCondition;
 
     /*onAccept(task){
@@ -20,8 +21,13 @@ class Task {
         
     }*/
     public getcurrent(): number {
-        return this._current;
+        return this.current;
     }
+    setcurrent(newcurreny:number){
+        this.current=newcurreny;
+        //this.checkStatus();
+    }
+    
 	public constructor(id, name, desc, status, fromNpcID, toNpcId) {
         this.id=id;
         this.name=name;

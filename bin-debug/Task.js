@@ -1,6 +1,7 @@
 var Task = (function () {
     function Task(id, name, desc, status, fromNpcID, toNpcId) {
-        this._current = 0;
+        this.current = 0;
+        this.so = "(" + this.current + "/" + this.total + ")";
         this.id = id;
         this.name = name;
         this.desc = desc;
@@ -9,7 +10,6 @@ var Task = (function () {
         this.toNpcId = toNpcId;
     }
     var d = __define,c=Task,p=c.prototype;
-    //total:number;
     //private condition:TaskCondition;
     /*onAccept(task){
 
@@ -21,7 +21,11 @@ var Task = (function () {
         
     }*/
     p.getcurrent = function () {
-        return this._current;
+        return this.current;
+    };
+    p.setcurrent = function (newcurreny) {
+        this.current = newcurreny;
+        //this.checkStatus();
     };
     return Task;
 }());

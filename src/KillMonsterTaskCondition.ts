@@ -8,6 +8,6 @@ class KillMonsterTaskCondition implements TaskConditon {
     onChange(task: TaskConditionContext) {
        var temp = task.getcurrent();
        temp++;
-    task.setcurrent(temp);
+       task.setcurrent(temp);
     }
 }

@@ -14,7 +14,7 @@ class TaskPanel implements Observer{
 	private panelY = 100;
 	private panelWidth = 250;
 	private panelHeight = 400;
-
+	//private so:string="("+this.current+"/"+this.total+")";
 
 	private taskNameTextField: egret.TextField;
 	private taskNameTextFieldText = "任务面板";
@@ -29,6 +29,13 @@ class TaskPanel implements Observer{
 	private taskDescTextFieldY = 120;
 	private taskDescTextFieldWidth = 180;
 	private taskDescTextFieldColor = 0x8a00ff;
+
+	private taskField: egret.TextField;
+	private taskFieldText = "";
+	private taskFieldX = 50;
+	private taskFieldY = 170;
+	private taskFieldWidth = 180;
+	private taskFieldColor = 0x8a00ff;
 
 	private button: egret.DisplayObjectContainer;
 	private buttonBack: egret.Shape;
@@ -104,6 +111,7 @@ class TaskPanel implements Observer{
 		this.taskDescTextField.textColor = this.taskDescTextFieldColor;
 		this.taskDescTextField.textAlign = egret.HorizontalAlign.CENTER;
 		
+
 		this.panel.addChild(this.backGround);
 		this.panel.addChild(this.taskNameTextField);
 		this.panel.addChild(this.taskDescTextField);
