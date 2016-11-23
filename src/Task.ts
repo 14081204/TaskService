@@ -3,6 +3,8 @@ class Task {
     name: string;
     desc: string;
     status: TaskStatus;
+    private _current: number = 0;
+    public total: number;
     fromNpcId: string;
     toNpcId: string;
     //total:number;
@@ -17,7 +19,9 @@ class Task {
     private checkStatus(){
         
     }*/
-
+    public getcurrent(): number {
+        return this._current;
+    }
 	public constructor(id, name, desc, status, fromNpcID, toNpcId) {
         this.id=id;
         this.name=name;

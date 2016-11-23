@@ -1,6 +1,13 @@
-class KillMonsterTaskCondition {
-    public onAccept(task: Task) {
+class KillMonsterTaskCondition implements TaskConditon {
+
+    onAccept(task: TaskConditionContext) {       
+         task.setcurrent(task.getcurrent());
     }
-    private onSubmit(task: Task) {
+    onSubmit(task: TaskConditionContext) {
+    }
+    onChange(task: TaskConditionContext) {
+       var temp = task.getcurrent();
+       temp++;
+    task.setcurrent(temp);
     }
 }

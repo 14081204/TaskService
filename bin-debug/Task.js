@@ -1,4 +1,14 @@
 var Task = (function () {
+    function Task(id, name, desc, status, fromNpcID, toNpcId) {
+        this._current = 0;
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.status = status;
+        this.fromNpcId = fromNpcID;
+        this.toNpcId = toNpcId;
+    }
+    var d = __define,c=Task,p=c.prototype;
     //total:number;
     //private condition:TaskCondition;
     /*onAccept(task){
@@ -10,15 +20,9 @@ var Task = (function () {
     private checkStatus(){
         
     }*/
-    function Task(id, name, desc, status, fromNpcID, toNpcId) {
-        this.id = id;
-        this.name = name;
-        this.desc = desc;
-        this.status = status;
-        this.fromNpcId = fromNpcID;
-        this.toNpcId = toNpcId;
-    }
-    var d = __define,c=Task,p=c.prototype;
+    p.getcurrent = function () {
+        return this._current;
+    };
     return Task;
 }());
 egret.registerClass(Task,'Task');

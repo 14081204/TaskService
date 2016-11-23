@@ -196,6 +196,7 @@ var ErrorCode;
 (function (ErrorCode) {
     ErrorCode[ErrorCode["TASK_ERROR_NULL"] = 0] = "TASK_ERROR_NULL";
     ErrorCode[ErrorCode["TASK_ERROR_UNFIND"] = 1] = "TASK_ERROR_UNFIND";
+    ErrorCode[ErrorCode["REPEAT_OBSERVER"] = 2] = "REPEAT_OBSERVER";
 })(ErrorCode || (ErrorCode = {}));
 var ObserverType = (function () {
     function ObserverType(observer, type) {

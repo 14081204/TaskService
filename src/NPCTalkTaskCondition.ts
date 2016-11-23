@@ -1,6 +1,9 @@
-class NPCTalkTaskCondition {
-	public onAccept(task: Task) {
+class NPCTalkTaskCondition implements TaskConditon{
+	public onAccept(task: TaskConditionContext) {
+        task.setcurrent(task.getcurrent());
     }
-    public onSubmit(task: Task) {
+    public onSubmit(task: TaskConditionContext) {
+    }
+    public onChange(task: TaskConditionContext) {
     }
 }

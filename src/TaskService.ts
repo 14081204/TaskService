@@ -1,4 +1,4 @@
-class TaskService {
+class TaskService{
 	observerList: ObserverType[];
 	taskList: Task[];
 	public constructor() {
@@ -212,7 +212,8 @@ function taskSearch(taskList: Task[], id: string): Task {
 enum ErrorCode {
 
     TASK_ERROR_NULL,
-    TASK_ERROR_UNFIND
+    TASK_ERROR_UNFIND,
+	REPEAT_OBSERVER
 
 }
 class ObserverType {

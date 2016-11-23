@@ -1,6 +1,6 @@
 class EventEmitter {
-	addObserver(){
+	addObserver(observer: Observer){
     }
-    notify(){        
+    notify(task: Task){        
     }
 }

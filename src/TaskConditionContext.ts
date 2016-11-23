@@ -1,7 +1,5 @@
-class TaskConditionContext {
-	public get current(){
-        return status;
-    }
-    public set current(task){
-    }
+interface TaskConditionContext {
+    getcurrent(): number;
+    setcurrent(current: number);
+  
 }

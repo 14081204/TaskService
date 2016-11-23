@@ -2,9 +2,9 @@ var EventEmitter = (function () {
     function EventEmitter() {
     }
     var d = __define,c=EventEmitter,p=c.prototype;
-    p.addObserver = function () {
+    p.addObserver = function (observer) {
     };
-    p.notify = function () {
+    p.notify = function (task) {
     };
     return EventEmitter;
 }());

@@ -1,8 +1,9 @@
-class TaskCondition {
-	onAccept(task: Task) {
+interface TaskConditon {
 
-    }
-    onSubmit(task: Task) {
+    onAccept(task: TaskConditionContext);
 
-    }
+    onSubmit(task: TaskConditionContext);
+
+    onChange(task: TaskConditionContext);
+
 }

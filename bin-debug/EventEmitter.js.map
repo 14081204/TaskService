@@ -1,1 +1,1 @@
-{"version":3,"file":"EventEmitter.js","sourceRoot":"","sources":["../src/EventEmitter.ts"],"names":[],"mappings":"AAAA;IAAA;IAKA,CAAC;;IAJA,aAAW,GAAX;IACG,CAAC;IACD,QAAM,GAAN;IACA,CAAC;IACL,mBAAC;AAAD,CAAC,AALD,IAKC;oBALK,YAAY;AAKjB"}
+{"version":3,"file":"EventEmitter.js","sourceRoot":"","sources":["../src/EventEmitter.ts"],"names":[],"mappings":"AAAA;IAAA;IAKA,CAAC;;IAJA,aAAW,GAAX,UAAY,QAAkB;IAC3B,CAAC;IACD,QAAM,GAAN,UAAO,IAAU;IACjB,CAAC;IACL,mBAAC;AAAD,CAAC,AALD,IAKC;oBALK,YAAY;AAKjB"}
