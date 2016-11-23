@@ -1,6 +1,6 @@
 var DialoguePanel = (function () {
     function DialoguePanel(stage, taskService) {
-        this.backColor = 0xFFFAFA;
+        this.backgroundColor = 0xFFFAFA;
         this.panelX = 37;
         this.panelY = 350;
         this.panelWidth = 350;
@@ -84,16 +84,15 @@ var DialoguePanel = (function () {
     p.onButtonClick = function (e) {
         switch (this.currentTaskStatus) {
             case TaskStatus.ACCEPTABLE:
-                console.log("Accept Button Click");
-                console.log("Current Task Id: " + this.currentTaskId);
+                //console.log("Accept Button Click");
+                //console.log("Current Task Id: "+ this.currentTaskId);
                 this.taskService.accept(this.currentTaskId);
                 break;
             case TaskStatus.CAN_SUBMIT:
-                console.log("Submit Button Click");
+                //console.log("Submit Button Click");
                 this.taskService.finish(this.currentTaskId);
                 break;
             default:
-                console.log("Button Click");
         }
         this.stage.removeChild(this.panel);
     }; //按钮被点击

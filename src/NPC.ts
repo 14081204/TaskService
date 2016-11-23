@@ -35,8 +35,9 @@ class NPC implements Observer {
     taskDuringState: State;
     taskStateMachine: StateMachine;
     Dialoguepanel:DialoguePanel;
-
-    public constructor(npcId: string, npcName: string, taskService,NPCtalkpanel:DialoguePanel) {
+    mockkillmosterbutton:MockKillMonsterButton;
+    
+    public constructor(npcId: string, npcName: string, taskService,NPCtalkpanel:DialoguePanel,mockkillmonsterpanel:MockKillMonsterButton) {
         this.npcStage = new egret.DisplayObjectContainer();
         this.npcStageShape = new egret.Shape();
         this.npcimage = new egret.Bitmap();
@@ -52,6 +53,7 @@ class NPC implements Observer {
 
         this.taskStateMachine = new StateMachine(this.taskNoneState);
         this.Dialoguepanel=NPCtalkpanel;
+        //this.mockkillmosterbutton=mockkillmonsterpanel;
     }
 
     getTask() {
@@ -87,7 +89,6 @@ class NPC implements Observer {
     setNpc(npcX: number, npcY: number, npcColor: number) {
         this.npcStageX = npcX;
         this.npcStageY = npcY;
-
         this.setnpcimage();
     }
 
@@ -107,7 +108,6 @@ class NPC implements Observer {
         this.npcStage.addChild(this.npcStageShape);
         this.npcStage.addChild(this.npcimage);
         this.npcimage.touchEnabled = true;
-        //this.npcStage.touchEnabled = true;
         this.npcimage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onNpcClick, this);
     }
 
@@ -141,11 +141,7 @@ class NPC implements Observer {
                     this.taskStateMachine.changeState(this.taskNoneState);
                 }
                 break;
-
-
-
         }
-
     }
 
     onNpcClick(e: egret.TouchEvent, task: Task = this.task, npcid: string = this.npcId) {
@@ -162,7 +158,6 @@ class NPC implements Observer {
             if (taskList[i].fromNpcId == npcId || taskList[i].toNpcId == npcId) {
                 //console.log("Find");
                 return taskList[i];
-
             }
         }
     }

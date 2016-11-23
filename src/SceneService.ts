@@ -1,0 +1,4 @@
+class SceneService {
+	notify() {
+    }
+}

@@ -8,7 +8,7 @@ class DialoguePanel {
 	private currentTaskId:string;
 	private currentTaskStatus:number;
 
-	private backColor = 0xFFFAFA;
+	private backgroundColor = 0xFFFAFA;
 	private backGround:egret.Shape;
 	private panelX = 37;
 	private panelY = 350;
@@ -111,40 +111,31 @@ class DialoguePanel {
 		this.panel.addChild(this.button);
 		this.button.touchEnabled = true;
 		this.button.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onButtonClick,this);
-
 	}
 
 	private onButtonClick(e:egret.TouchEvent) {
 		switch(this.currentTaskStatus){
 			case TaskStatus.ACCEPTABLE:
-				console.log("Accept Button Click");
-				console.log("Current Task Id: "+ this.currentTaskId);
+				//console.log("Accept Button Click");
+				//console.log("Current Task Id: "+ this.currentTaskId);
 				this.taskService.accept(this.currentTaskId);
-				break;
-			
+				break;			
 			case TaskStatus.CAN_SUBMIT:
-				console.log("Submit Button Click");
+				//console.log("Submit Button Click");
 				this.taskService.finish(this.currentTaskId);
 				break;
-
 			default:
-				console.log("Button Click");
-
+				//console.log("Button Click");
 		}
-
 		this.stage.removeChild(this.panel);
-
 	} //按钮被点击
-
 
 	public showPanel() {
 		this.stage.addChild(this.panel);
-
 	}
 
 	public removePanel() {
 		this.stage.removeChild(this.panel);
-
 	}
 
 	public onOpen(task:Task) {
@@ -153,13 +144,11 @@ class DialoguePanel {
 		this.changeButton(task.status);
 		this.currentTaskStatus = task.status;
 		this.showPanel();
-
 	} //被通知
 
 	private changeTaskText(name:string,desc:string) {
 		this.taskNameTextField.text = name;
 		this.taskDescTextField.text = desc;
-
 	}
 
 	private changeButton(taskStatus:number) {
@@ -167,16 +156,12 @@ class DialoguePanel {
 			case TaskStatus.ACCEPTABLE:
 				this.buttonTextField.text = "接受任务";
 				break;
-
 			case TaskStatus.CAN_SUBMIT:
 				this.buttonTextField.text = "提交任务";
 				break;
-
 			default:
 				this.buttonTextField.text = "";
 				break;
-
 		}
-
 	}
 }

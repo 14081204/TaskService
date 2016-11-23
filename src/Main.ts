@@ -128,7 +128,8 @@ class Main extends egret.DisplayObjectContainer {
         var taskService = new TaskService();
         var taskPanel = new TaskPanel(this, taskService);
         var npctalkpanel=new DialoguePanel(this,taskService);
-        var npc_0 = new NPC("npc_0", "NPC_1", taskService,npctalkpanel);
+        var mockkillmonsterbutton=new MockKillMonsterButton(this,taskService);
+        var npc_0 = new NPC("npc_0", "NPC_1", taskService,npctalkpanel, mockkillmonsterbutton);
 
         var NPC1Nametextfield = new egret.TextField();
         this.addChild(NPC1Nametextfield);
@@ -157,7 +158,7 @@ class Main extends egret.DisplayObjectContainer {
         npc_0.getTask();
 
 
-        var npc_1 = new NPC("npc_1", "NPC_2", taskService,npctalkpanel);
+        var npc_1 = new NPC("npc_1", "NPC_2", taskService,npctalkpanel, mockkillmonsterbutton);
         npc_1.setNpc1(480, 520, 0xffffff);
         npc_1.drawNpc();
         this.addChild(npc_1.npcStage);

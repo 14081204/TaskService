@@ -1,4 +1,15 @@
 var Task = (function () {
+    //total:number;
+    //private condition:TaskCondition;
+    /*onAccept(task){
+
+    }
+    onSubmit(task){
+
+    }
+    private checkStatus(){
+        
+    }*/
     function Task(id, name, desc, status, fromNpcID, toNpcId) {
         this.id = id;
         this.name = name;

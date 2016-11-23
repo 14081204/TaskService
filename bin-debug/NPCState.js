@@ -54,11 +54,11 @@ var TaskDuringState = (function () {
     p.onEnter = function () {
         this.drawTaskSign();
         this.npc.npcStage.addChild(this.taskSign);
-        console.log("Enter Task Avilable State");
+        //console.log("Enter Task Avilable State");
     };
     p.onExit = function () {
         this.npc.npcStage.removeChild(this.taskSign);
-        console.log("Exit Task Avilable State");
+        //console.log("Exit Task Avilable State");
     };
     p.drawTaskSign = function () {
         this.taskSign.x = this.taskSignX;
@@ -83,11 +83,11 @@ var TaskSubmitState = (function () {
     p.onEnter = function () {
         this.drawTaskSign();
         this.npc.npcStage.addChild(this.taskSign);
-        console.log("Enter Task Submit State");
+        //console.log("Enter Task Submit State");
     };
     p.onExit = function () {
         this.npc.npcStage.removeChild(this.taskSign);
-        console.log("Exit Task Submit State");
+        //console.log("Exit Task Submit State");
     };
     p.drawTaskSign = function () {
         this.taskSign.x = this.taskSignX;

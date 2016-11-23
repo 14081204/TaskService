@@ -4,18 +4,15 @@ class TaskNoneState implements State {
 
     constructor(npc: NPC) {
         this.npc = npc;
-
     }
 
     onEnter() {
         //console.log("Enter Task None State");
-
     }
 
     onExit() {
         //console.log("Exit Task None State");
     }
-
 }
 
 class TaskAvilableState implements State {
@@ -53,9 +50,7 @@ class TaskAvilableState implements State {
         this.taskSign.width = this.taskSignWidth;
         this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture=RES.getRes(image.ACCEPTABLEimage);
-
     }
-
 }
 
 class TaskDuringState implements State {
@@ -71,20 +66,17 @@ class TaskDuringState implements State {
     constructor(npc: NPC) {
         this.npc = npc;
         this.taskSign = new egret.Bitmap();
-
     }
 
     onEnter() {
         this.drawTaskSign();
         this.npc.npcStage.addChild(this.taskSign);
-        console.log("Enter Task Avilable State");
-
+        //console.log("Enter Task Avilable State");
     }
 
     onExit() {
         this.npc.npcStage.removeChild(this.taskSign);
-        console.log("Exit Task Avilable State");
-
+        //console.log("Exit Task Avilable State");
     }
 
     drawTaskSign() {
@@ -93,7 +85,6 @@ class TaskDuringState implements State {
         this.taskSign.width = this.taskSignWidth;
         this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture=RES.getRes(image.DURINGimage);
-
     }
 }
 
@@ -110,20 +101,17 @@ class TaskSubmitState implements State {
     constructor(npc: NPC) {
         this.npc = npc;
          this.taskSign = new egret.Bitmap();
-
     }
 
     onEnter() {
         this.drawTaskSign();
         this.npc.npcStage.addChild(this.taskSign);
-        console.log("Enter Task Submit State");
-
+        //console.log("Enter Task Submit State");
     }
 
     onExit() {
         this.npc.npcStage.removeChild(this.taskSign);
-        console.log("Exit Task Submit State");
-
+        //console.log("Exit Task Submit State");
     }
 
     drawTaskSign() {
@@ -132,7 +120,6 @@ class TaskSubmitState implements State {
         this.taskSign.width = this.taskSignWidth;
         this.taskSign.height = this.taskSignHeight;
         this.taskSign.texture=RES.getRes(image.CANSUBMITTEDimage);
-
     }
 
 }

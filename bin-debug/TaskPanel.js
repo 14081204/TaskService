@@ -1,6 +1,6 @@
 var TaskPanel = (function () {
     function TaskPanel(stage, taskService) {
-        this.backColor = 0xc7c0c0;
+        this.backgroundColor = 0xc7c0c0;
         this.panelX = 390;
         this.panelY = 100;
         this.panelWidth = 250;
@@ -59,7 +59,7 @@ var TaskPanel = (function () {
         this.button.addChild(this.buttonBack);
         this.button.addChild(this.buttonTextField);
         //drawBackGround
-        this.backGround.graphics.beginFill(this.backColor, 0.5);
+        this.backGround.graphics.beginFill(this.backgroundColor, 0.5);
         this.backGround.graphics.drawRect(0, 0, this.panelWidth, this.panelHeight);
         this.backGround.graphics.endFill();
         //setText
@@ -86,23 +86,23 @@ var TaskPanel = (function () {
     p.onButtonClick = function (e) {
         switch (this.currentTaskStatus) {
             case TaskStatus.ACCEPTABLE:
-                console.log("Accept Button Click");
-                console.log("Current Task Id: " + this.currentTaskId);
+                //console.log("Accept Button Click");
+                //console.log("Current Task Id: " + this.currentTaskId);
                 this.taskService.accept(this.currentTaskId);
                 break;
             case TaskStatus.DURING:
-                console.log("During Button Click");
+                //console.log("During Button Click");
                 this.taskService.during(this.currentTaskId);
                 break;
             case TaskStatus.CAN_SUBMIT:
-                console.log("Submit Button Click");
+                //console.log("Submit Button Click");
                 this.taskService.finish(this.currentTaskId);
                 break;
             default:
         }
     };
     p.onStageClick = function (e) {
-        console.log("Stage Click");
+        //console.log("Stage Click");
     };
     p.onChange = function (task) {
         this.currentTaskId = task.id;

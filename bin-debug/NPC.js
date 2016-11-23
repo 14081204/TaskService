@@ -7,7 +7,7 @@ var image = {
     UNACCEPTABLEimage: "unaccept_png"
 };
 var NPC = (function () {
-    function NPC(npcId, npcName, taskService, NPCtalkpanel) {
+    function NPC(npcId, npcName, taskService, NPCtalkpanel, mockkillmonsterpanel) {
         //tileSize: number = 100;
         this.npcimageX = 0;
         this.npcimageY = 64;
@@ -26,6 +26,7 @@ var NPC = (function () {
         this.taskSubmitState = new TaskSubmitState(this);
         this.taskStateMachine = new StateMachine(this.taskNoneState);
         this.Dialoguepanel = NPCtalkpanel;
+        //this.mockkillmosterbutton=mockkillmonsterpanel;
     }
     var d = __define,c=NPC,p=c.prototype;
     p.getTask = function () {
@@ -72,7 +73,6 @@ var NPC = (function () {
         this.npcStage.addChild(this.npcStageShape);
         this.npcStage.addChild(this.npcimage);
         this.npcimage.touchEnabled = true;
-        //this.npcStage.touchEnabled = true;
         this.npcimage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onNpcClick, this);
     };
     p.checkState = function () {
